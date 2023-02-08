@@ -12,6 +12,7 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
+            errMessage: ''
         }
     }
     handleOnChangeUsername = (event) => {
@@ -25,9 +26,29 @@ class Login extends Component {
         })
     }
     handleLogin = async () => {
-        console.log('Username: ', this.state.username, ' Password: ', this.state.password)
-        console.log('All state: ', this.state)
-        await handleLoginApi(this.state.username, this.state.password)
+        this.setState({
+            errMessage: ''
+        })
+        try {
+            let data = await handleLoginApi(this.state.username, this.state.password);
+            if(data && data.errCode !== 0){
+                this.setState({
+                    errMessage: data.message
+                })
+            }
+            if(data && data.errCode === 0){
+                console.log('Login succeeds!')
+            }
+        } catch (error) {
+            if (error.response) {
+                if (error.response.data) {
+                    this.setState({
+                        errMessage: error.response.data.message
+                    })
+                }
+            }
+            console.log('RES: ', error.message)
+        }
     }
     render() {
 
@@ -47,6 +68,9 @@ class Login extends Component {
                                 Password:
                             </label>
                             <input type='password' className='form-control' placeholder='Enter your password' onChange={(event) => { this.handleOnChangePassword(event) }} />
+                        </div>
+                        <div className='col-12' style={{ color: 'red' }}>
+                            {this.state.errMessage}
                         </div>
                         <div className='col-12'>
                             <button className='btn-login' onClick={() => { this.handleLogin() }}>Login</button>
