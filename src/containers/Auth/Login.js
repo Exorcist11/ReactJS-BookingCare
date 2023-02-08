@@ -31,14 +31,16 @@ class Login extends Component {
         })
         try {
             let data = await handleLoginApi(this.state.username, this.state.password);
-            if(data && data.errCode !== 0){
+            if (data && data.errCode !== 0) {
                 this.setState({
                     errMessage: data.message
                 })
             }
-            if(data && data.errCode === 0){
+            if (data && data.errCode === 0) {
+                userLoginSuccess(data.user)
                 console.log('Login succeeds!')
             }
+            console.log('Data: ', data);
         } catch (error) {
             if (error.response) {
                 if (error.response.data) {
@@ -47,7 +49,6 @@ class Login extends Component {
                     })
                 }
             }
-            console.log('RES: ', error.message)
         }
     }
     render() {
@@ -105,8 +106,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+        //userLoginFail: () => dispatch(actions.adminLoginFail()),
+        userLoginSuccess: (userInfor) => dispatch(actions.userLoginSuccess(userInfor))
     };
 };
 
