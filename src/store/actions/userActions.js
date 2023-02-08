@@ -1,8 +1,7 @@
 import actionTypes from './actionTypes';
 
 export const addUserSuccess = () => ({
-    type: actionTypes.USER_LOGIN_SUCCESS,
-
+    type: actionTypes.USER_LOGIN_SUCCESS
 })
 
 export const userLoginSuccess = (userInfo) => ({

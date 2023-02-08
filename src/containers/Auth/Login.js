@@ -37,7 +37,7 @@ class Login extends Component {
                 })
             }
             if (data && data.errCode === 0) {
-                userLoginSuccess(data.user)
+                this.props.userLoginSuccess(data.user)
                 console.log('Login succeeds!')
             }
             console.log('Data: ', data);
