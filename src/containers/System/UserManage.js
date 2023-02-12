@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss';
-import { getAllUsers } from '../../services/userService';
+import { getAllUsers, createNewUserService } from '../../services/userService';
 import ModalUser from './ModalUser';
 
 class UserManage extends Component {
@@ -15,11 +15,15 @@ class UserManage extends Component {
     }
 
     async componentDidMount() {
+        await this.getAllUsersFromReact();
+    }
+
+    getAllUsersFromReact = async () => {
         let respone = await getAllUsers('ALL');
         if (respone && respone.errCode === 0) {
             this.setState({
                 arrUsers: respone.users,
-                isOpenModalUser: false
+                // isOpenModalUser: false
             })
         }
     }
@@ -35,6 +39,22 @@ class UserManage extends Component {
         })
     }
 
+    createNewUser = async (data) => {
+        try {
+            let respone = await createNewUserService(data);
+            if (respone && respone.errCode !== 0) {
+                alert(respone.errMessage);
+            } else {
+                await this.getAllUsersFromReact();
+                this.setState({
+                    isOpenModalUser: false
+                })
+            }
+        } catch (error) {
+            console.log(Error);
+        }
+    }
+
     render() {
         let arrUsers = this.state.arrUsers;
         console.log(arrUsers);
@@ -43,7 +63,7 @@ class UserManage extends Component {
                 <ModalUser
                     isOpen={this.state.isOpenModalUser}
                     toggleFromParent={this.toggleUserModal}
-                    test={"abc"}
+                    createNewUser={this.createNewUser}
                 />
                 <div className='title text-center'>
                     MANAGE USERS
@@ -53,34 +73,34 @@ class UserManage extends Component {
                 </div>
                 <div className='users-table mt-4 mx-1'>
                     <table id="customers">
-                        <tr>
-                            <th>Email</th>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>Address</th>
-                            <th>Action</th>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <th>Email</th>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Address</th>
+                                <th>Action</th>
+                            </tr>
 
-                        {arrUsers && arrUsers.map((item, index) => {
-                            return (
-                                <tr key={index}>
-                                    <>
-                                        <td>{item.email}</td>
-                                        <td>{item.firstName}</td>
-                                        <td>{item.lastName}</td>
-                                        <td>{item.address}</td>
-                                        <td>
-                                            <button className='btn-edit'><i className='fas fa-pencil-alt'></i></button>
-                                            <button className='btn-delete'><i className="fas fa-trash-alt"></i></button>
-                                        </td>
-                                    </>
-                                </tr>
-                            )
-                        })
-                        }
-
+                            {arrUsers && arrUsers.map((item, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <>
+                                            <td>{item.email}</td>
+                                            <td>{item.firstName}</td>
+                                            <td>{item.lastName}</td>
+                                            <td>{item.address}</td>
+                                            <td>
+                                                <button className='btn-edit'><i className='fas fa-pencil-alt'></i></button>
+                                                <button className='btn-delete'><i className="fas fa-trash-alt"></i></button>
+                                            </td>
+                                        </>
+                                    </tr>
+                                )
+                            })
+                            }
+                        </tbody>
                     </table>
-
                 </div>
             </div>
         );
