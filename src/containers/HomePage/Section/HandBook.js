@@ -20,7 +20,7 @@ class HandBook extends Component {
                     <div className='section-body'>
                         <Slider {...this.props.settings}>
                             <div className='section-customize'>
-                                <div className='bg-image section-handbook ' />
+                                <div className='bg-image section-handbook' />
                                 <div>Cơ xương khớp 1</div>
                             </div>
                             <div className='section-customize'>
