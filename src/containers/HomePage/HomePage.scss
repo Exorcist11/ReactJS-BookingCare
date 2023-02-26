@@ -99,6 +99,28 @@
     }
 }
 
+.section-handbook-content {
+    display: flex;
+    width  : 100%;
+    cursor : pointer;
+
+    &:hover {
+        color: #6bceda;
+    }
+
+    .section-handbook {
+        width: 60%;
+    }
+
+    .content-handbook {
+        width      : 40%;
+        font-weight: 600;
+        text-align : justify;
+        font-size  : 20px;
+        padding    : 10px;
+    }
+}
+
 .section-share {
     height: 330px;
 

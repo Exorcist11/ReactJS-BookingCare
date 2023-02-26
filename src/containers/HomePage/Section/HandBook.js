@@ -20,28 +20,40 @@ class HandBook extends Component {
                     <div className='section-body'>
                         <Slider {...this.props.settings}>
                             <div className='section-customize'>
-                                <div className='bg-image section-handbook' />
-                                <div>Cơ xương khớp 1</div>
+                                <div className='section-handbook-content'>
+                                    <div className='bg-image section-handbook' />
+                                    <div className='content-handbook'>Cơ xương khớp 1</div>
+                                </div>
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image section-handbook ' />
-                                <div>Cơ xương khớp 2</div>
+                                <div className='section-handbook-content'>
+                                    <div className='bg-image section-handbook' />
+                                    <div className='content-handbook'>Cơ xương khớp 2</div>
+                                </div>
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image section-handbook ' />
-                                <div>Cơ xương khớp 3</div>
+                                <div className='section-handbook-content'>
+                                    <div className='bg-image section-handbook' />
+                                    <div className='content-handbook'>Cơ xương khớp 3</div>
+                                </div>
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image section-handbook ' />
-                                <div>Cơ xương khớp 4</div>
+                                <div className='section-handbook-content'>
+                                    <div className='bg-image section-handbook' />
+                                    <div className='content-handbook'>Cơ xương khớp 4</div>
+                                </div>
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image section-handbook ' />
-                                <div>Cơ xương khớp 5</div>
+                                <div className='section-handbook-content'>
+                                    <div className='bg-image section-handbook' />
+                                    <div className='content-handbookt'>Cơ xương khớp 5</div>
+                                </div>
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image section-handbook ' />
-                                <div>Cơ xương khớp 6</div>
+                                <div className='section-handbook-content'>
+                                    <div className='bg-image section-handbook' />
+                                    <div className='content-handbook'>Cơ xương khớp 6</div>
+                                </div>
                             </div>
                         </Slider>
                     </div>
