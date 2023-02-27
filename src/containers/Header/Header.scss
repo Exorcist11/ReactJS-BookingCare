@@ -25,6 +25,10 @@
     }
 
     .languages {
+        .welcome {
+            margin-right: 10px;
+        }
+
         .language-en {
             cursor      : pointer;
             margin-left : 15px;
@@ -37,7 +41,7 @@
         }
 
         .language-vi {
-            cursor : pointer;
+            cursor: pointer;
 
             &.active {
                 opacity: 1;
