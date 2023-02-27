@@ -47,5 +47,19 @@
             "handbook": "Handbooks",
             "manage-handbook": "Manage Handbooks"
         }
+    },
+    "manage-user": {
+        "add": "Add user",
+        "email": "Email",
+        "password": "Password",
+        "first-name": "First name",
+        "last-name": "Last name",
+        "address": "Address",
+        "phone-number": "Phone number",
+        "gender": "Gender",
+        "position": "Position",
+        "role": "Vai trò",
+        "image": "Avatar",
+        "save": "Save user"
     }
 }
