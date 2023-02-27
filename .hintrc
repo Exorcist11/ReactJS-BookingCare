@@ -12,6 +12,7 @@
       }
     ],
     "apple-touch-icons": "off",
-    "compat-api/css": "off"
+    "compat-api/css": "off",
+    "css-prefix-order": "off"
   }
 }
