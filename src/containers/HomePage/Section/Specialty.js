@@ -15,7 +15,7 @@ class Specialty extends Component {
                 <div className='section-container'>
                     <div className='section-header'>
                         <span className='title-section'>Chuyên khoa phổ biến</span>
-                        <button className='btn-section'>Xem thêm</button>
+                        <button className='btn-section'><FormattedMessage id="homepage.more-infor" /></button>
                     </div>
 
                     <div className='section-body'>

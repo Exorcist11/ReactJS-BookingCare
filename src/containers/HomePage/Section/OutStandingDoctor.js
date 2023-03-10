@@ -4,7 +4,8 @@ import Slider from 'react-slick';
 import { Label } from 'reactstrap';
 import * as actions from '../../../store/actions';
 import { LANGUAGES } from '../../../utils';
-
+import { FormattedMessage } from 'react-intl';
+import HomePage from '../HomePage';
 class OutStandingDoctor extends Component {
     constructor(props) {
         super(props)
@@ -27,15 +28,15 @@ class OutStandingDoctor extends Component {
     render() {
         let arrDoctors = this.state.arrDoctors;
         let { language } = this.props
-        
+
         console.log('check arr doctor: ', arrDoctors)
         return (
             <div>
                 <div className='section-share section-outstanding-doctor'>
                     <div className='section-container'>
                         <div className='section-header'>
-                            <span className='title-section'>Bác sĩ nổi bật tuần qua</span>
-                            <button className='btn-section'>Xem thêm</button>
+                            <span className='title-section'><FormattedMessage id="homepage.outstanding-doctor" /></span>
+                            <button className='btn-section'><FormattedMessage id="homepage.more-infor" /></button>
                         </div>
 
                         <div className='section-body'>
