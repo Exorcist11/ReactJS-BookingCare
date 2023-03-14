@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Slider from 'react-slick';
-import { Label } from 'reactstrap';
 import * as actions from '../../../store/actions';
 import { LANGUAGES } from '../../../utils';
 import { FormattedMessage } from 'react-intl';
-import HomePage from '../HomePage';
+import { withRouter } from 'react-router';
+
 class OutStandingDoctor extends Component {
+
     constructor(props) {
         super(props)
         this.state = {
@@ -14,6 +15,7 @@ class OutStandingDoctor extends Component {
         }
 
     }
+
     componentDidUpdate(prevProps, preState, snapshot) {
         if (prevProps.topDoctorsRedux !== this.props.topDoctorsRedux) {
             this.setState({
@@ -21,15 +23,20 @@ class OutStandingDoctor extends Component {
             })
         }
     }
+
     componentDidMount() {
         this.props.loadTopDoctors();
+    }
+    handleViewDetailDoctor = (doctor) => {
+        console.log("View infor: ", doctor);
+        this.props.history.push(`/detail-doctor/${doctor.id}`)
     }
 
     render() {
         let arrDoctors = this.state.arrDoctors;
         let { language } = this.props
 
-        console.log('check arr doctor: ', arrDoctors)
+        //console.log('check arr doctor: ', arrDoctors)
         return (
             <div>
                 <div className='section-share section-outstanding-doctor'>
@@ -49,7 +56,7 @@ class OutStandingDoctor extends Component {
                                     let nameVi = `${item.positionData.valueVi}, ${item.lastName} ${item.firstName}`;
                                     let nameEn = `${item.positionData.valueEn}, ${item.firstName} ${item.lastName}`;
                                     return (
-                                        <div className='section-customize'>
+                                        <div className='section-customize' key={index} onClick={() => this.handleViewDetailDoctor(item)}>
                                             <div className='customize-border'>
                                                 <div className='outer-bg'>
                                                     <div className='bg-image section-outstanding-doctor' style={{ backgroundImage: `url(${imageBase64})` }} />
@@ -87,4 +94,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor));

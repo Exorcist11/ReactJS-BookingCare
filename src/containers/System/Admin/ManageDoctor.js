@@ -99,7 +99,7 @@ class ManageDoctor extends Component {
     }
 
     render() {
-        console.log("Check state: ", this.state)
+        //console.log("Check state: ", this.state)
         return (
             <div className='manage-doctor-container'>
                 <div className='manage-doctor-title'>Thêm thông tin bác sĩ</div>
